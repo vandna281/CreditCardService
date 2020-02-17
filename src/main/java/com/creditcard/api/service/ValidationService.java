@@ -25,7 +25,7 @@ public class ValidationService {
 
 	public boolean ifAccountExists(CreditAccount newCardObj) {
 		if ((daoFactory.getCreditAccountDAO().getCardByCardNumber(newCardObj.getCardNumber()) != null)
-				&& (daoFactory.getCreditAccountDAO().getCardByUsername(newCardObj.getUserName()) != null)) {
+				|| (daoFactory.getCreditAccountDAO().getCardByUsername(newCardObj.getUserName()) != null)) {
 			return true;
 		}
 		return false;
