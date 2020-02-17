@@ -35,6 +35,9 @@ public class ValidationService {
 		cardnum = cardnum.replaceAll("\\s+","");
 		int sum = 0;
 		boolean secondDigit = false;
+		if(cardnum.length() > 19) {
+			return false;
+		}
 		for (int i = cardnum.length() - 1; i >= 0; i--) {
 			int n = cardnum.charAt(i) - '0';
 			if (secondDigit) {
