@@ -32,7 +32,7 @@ public class CreditAccountService {
 				resultMap.put("msg", "Credit Account successfully created.");
 			} else {
 				resultMap.put("status", Integer.toString(APIConstants.CONFLICT));
-				resultMap.put("msg", "Account already exists or card number is not valid.");
+				resultMap.put("msg", "Account already exists(username or card number already exist) or card number is not valid.");
 			}
 		} catch (Exception ex) {
 			resultMap.put("status", Integer.toString(APIConstants.BAD_REQUEST));
