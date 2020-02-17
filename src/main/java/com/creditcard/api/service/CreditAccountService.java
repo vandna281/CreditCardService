@@ -10,24 +10,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.creditcard.api.config.APIConstants;
-import com.creditcard.api.dao.impl.DaoFactory;
 import com.creditcard.api.entity.CreditAccount;
 
 @Service
 public class CreditAccountService {
 
-	private final DaoFactory daoFactory = DaoFactory.getDAOFactory(DaoFactory.H2);
-	
 	final static Logger logger = LoggerFactory.getLogger(CreditAccountService.class);
 
 	@Autowired
 	private ValidationService validate;
 	
+	@Autowired
+	private CreditAccountServiceHelper caSvchlper;
+	
 	public Map<String, String> addNewCard(CreditAccount newCardObj) {
 		Map<String, String> resultMap = new HashMap<String, String>();
 		try {
 			if (validate.validateCard(newCardObj)) {
-				daoFactory.getCreditAccountDAO().saveCard(newCardObj);
+				caSvchlper.saveCard(newCardObj);
 				resultMap.put("status", Integer.toString(APIConstants.CREATED));
 				resultMap.put("msg", "Credit Account successfully created.");
 			} else {
@@ -42,7 +42,7 @@ public class CreditAccountService {
 	}
 
 	public List<CreditAccount> getAllCards() {
-		return daoFactory.getCreditAccountDAO().getAllCards();
+		return caSvchlper.getAllCards();
 	}
 
 }

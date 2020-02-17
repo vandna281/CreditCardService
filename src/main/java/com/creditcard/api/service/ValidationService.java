@@ -11,15 +11,12 @@ public class ValidationService {
 	private final DaoFactory daoFactory = DaoFactory.getDAOFactory(DaoFactory.H2);
 
 	/**
-	 * 1) It checks if account already exists or not. 2) If it has valid card
-	 * number.
-	 * 
+	 * 1) It checks if account already exists or not. 
+	 * 2) If it has valid card number.
 	 * @param newCardObj
 	 * @return validation status
 	 */
 	public boolean validateCard(CreditAccount newCardObj) {
-		boolean result = ifAccountExists(newCardObj);
-		boolean result2 = isValidCardNumber(newCardObj.getCardNumber());
 		if (!ifAccountExists(newCardObj) && isValidCardNumber(newCardObj.getCardNumber())) {
 			return true;
 		}
