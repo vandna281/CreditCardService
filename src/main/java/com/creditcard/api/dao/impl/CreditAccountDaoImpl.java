@@ -20,7 +20,7 @@ public class CreditAccountDaoImpl implements CreditAccountDao {
 
 	final static Logger logger = LoggerFactory.getLogger(CreditAccountDaoImpl.class);
 
-	private final static String SQL_GET_ALL_CARDS = "SELECT * FROM CreditAccount";
+	private final static String SQL_GET_ALL_CARDS = "SELECT * FROM CreditAccount order by id asc";
 	private final static String SQL_GET_CARD_BY_CARD_NUM = "SELECT * FROM CreditAccount where cardNumber = ?";
 	private final static String SQL_GET_CARD_BY_USERNAME = "SELECT * FROM CreditAccount where userName = ?";
 	private final static String SQL_INSERT_CARD = "INSERT INTO CreditAccount (userName, cardNumber, cardLimit) VALUES (?, ?, ?)";
